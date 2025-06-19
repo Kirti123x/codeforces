@@ -7,19 +7,23 @@ int main(){
     for(int i = 0; i<t; i++){
         int n;
         cin>>n;
-        vector<int>a(n);
+        vector<int> v(n);
+        unordered_map<int,int> req,fortest;
+    
+        for (int i = 0; i < n; i++){
+            cin>>v[i];
+        }
+        int ans = 0, count = 0;
 
-        for(int j=0; j<n;j++){
-            cin>>a[j];
+        for (int i = 0; i < n; i++){
+            req[v[i]]++;
+            fortest[v[i]]++;
+            if(fortest.size()==req.size()) {
+                ans++;
+                fortest.clear();
+            }
         }
-        if(n==1){
-            cout<<1<<endl;
-            continue;
-        } 
-        int ans = 1;
-        int l = 1, r = 1;
-        while(a[r]!=a[0]){
-            r++;
-        }
+    
+        cout<<ans<<endl;
     }
 }
