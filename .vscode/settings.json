@@ -11,5 +11,7 @@
         "shared_mutex": "cpp",
         "sstream": "cpp",
         "tuple": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "C:/MinGW/bin/gcc.exe"
+    "competitiveProgrammingHelper.defaultFolder": "C:\\Users\\khemg\\Desktop"
 }

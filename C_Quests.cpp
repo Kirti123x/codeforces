@@ -27,7 +27,6 @@ int main(){
             m = max(m,b[i]);
             hold = sum + (k-i-1)*m;
             ans = max(ans,hold);
-            cout<<ans<<"  ";
         }       
         cout<<ans<<endl;
     }
