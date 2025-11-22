@@ -1,19 +1,40 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+#define int long long
+#define ll long long
+typedef vector<int> vi;
 
-int main(){
+int dx[4] = {-1, 1, -1, 1}, dy[4] = {-1, -1, 1, 1};
+
+void solve(){ 
+    long long a, b;
+	cin >> a >> b;
+	long long xk, yk,xq, yq; 
+	cin >> xk >> yk>>xq >> yq;
+	set<pair<int, int>> k, q;
+
+	for (int j = 0; j < 4; j++){
+		k.insert({xk + dx[j]*a, yk + dy[j]*b});
+		k.insert({xk + dx[j]*b, yk + dy[j]*a});
+		q.insert({xq + dx[j]*a, yq + dy[j]*b});
+		q.insert({xq + dx[j]*b, yq + dy[j]*a});
+	}
+	int ans = 0; 
+	for (auto i : k)
+		if(q.find(i)!=q.end()) ans++;
+
+	cout << ans;
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int t;
-    cin>>t;
-    for(int i = 0; i<t; i++){
-        int arr[3][2];
-        for(int k = 0; k<3; k++){
-            for(int j = 0; j<2; j++){
-                cin>>arr[k][j];
-            }
-        }
-        if(abs(arr[1][0]-arr[2][0]) == 3 && abs(arr[1][1]-arr[2][1]) == 3) cout<<2<<"\n";
-        else if(abs(arr[1][0]-arr[2][0]) == 4 && (abs(arr[1][1]-arr[2][1]) == 0 || abs(arr[1][1]-arr[2][1]) == 2)) cout<<1<<"\n";
-        else if(abs(arr[2][0]-arr[1][0]) == 4 && (abs(arr[2][1]-arr[1][1]) == 0 || abs(arr[2][1]-arr[1][1]) == 2)) cout<<1<<"\n";
-        else cout<<0<<"\n";
+    cin >> t;
+
+    while (t--) {
+        solve();
+        cout<<endl;
     }
 }

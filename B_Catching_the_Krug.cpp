@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+void solve() {
+    int n, rk, ck, rd, cd;
+    cin>>n>>rk>>ck>>rd>>cd;
+    
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+}
