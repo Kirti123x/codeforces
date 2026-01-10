@@ -1,51 +1,44 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+#define int long long
+#define ll long long
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define nl cout << endl
+typedef vector<int> vi;
+typedef vector<ll> vll; 
 
-int main(){
+void solve(){
     string s;
     cin>>s;
-    vector<int> v;
-    int vCount=1;
-    int oCount=0;
-    int check = 0;
+    int n = s.size();
+    vector<vector<int>> dp(n+1, vector<int>(3, 0));
 
-    for(int i=0;i<s.size()-1;i++){
-        if(s[i]=='v'&&s[i+1]=='v'){
-            if(oCount>0){
-                v.push_back(oCount);
-                oCount=0;
-            }
+    int v = 0, w = 0;
 
-            vCount++;
-
-            if(i==s.size()-2&&vCount>1){
-                v.push_back(vCount -1);
-            }
-            check = 1;
+    for(int i = 1; i<n; i++){
+        if(s[i]=='v'&&s[i-1]=='v'){
+            dp[i+1][0]++;
+            dp[i+1][2]+=dp[i][1];
         }
-        else if(s[i]=='o'&&check){
-            if(vCount>1){
-                v.push_back(vCount - 1);
-            }
-            vCount = 1;
-            oCount++;
+        else if(s[i]=='o'){
+            dp[i+1][1]+=dp[i][0];
         }
+        dp[i+1][0]+=dp[i][0];
+        dp[i+1][1]+=dp[i][1];
+        dp[i+1][2]+=dp[i][2];
     }
-    vCount = 0;
-    oCount = 0;
-    int ans = 0;
-    for(int i=0;i<v.size();i+=2){
-        int a = 0;
-        oCount = 0;
-        for(int j=i+1;j<v.size();j++){
-            if(a%2==0){
-                oCount+=v[j];
-            }
-            else{
-                ans+=v[i]*oCount*v[j];
-            }
-            a++;
-        }
+    cout<<dp[n][2];
+
+}
+
+signed main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t=1;
+    //cin >> t;
+    while (t--) {
+        solve();
     }
-    cout<<ans<<endl;    
 }

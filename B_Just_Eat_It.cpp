@@ -1,24 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
 #define ll long long
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define nl cout << endl
+typedef vector<int> vi;
+typedef vector<ll> vll; 
 
 void solve() {
-    ll n;
-    cin>>n;
-    vector<ll> a(n);
-    bool is = true;
+    int n; cin>>n;
+    vi a(n), prefix();
+    int sum = 0;
+
     for(int i = 0; i<n; i++){
         cin>>a[i];
-        if(a[i]<0){
-            is = false;
-        } 
+        sum+=a[i];
     } 
-    if(is) cout<<"YES\n";
-    else cout<<"NO\n";
-    return;
+    int cur = 0, maxcur = 0;
+    for(int i = 0; i<n-1; i++){
+        cur+=a[i];
+        if(cur<0) cur=0;
+        maxcur = max(maxcur, cur);
+    }
+    cur = 0;
+    for(int i = 1; i<n; i++){
+        cur+=a[i];
+        if(cur<0) cur=0;
+        maxcur = max(maxcur, cur);
+    }
+    if(maxcur<sum)yes;
+    else no;
 }
 
-int main() {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 

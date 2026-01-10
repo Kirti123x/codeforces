@@ -7,6 +7,19 @@ using namespace std;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 
+int gcd(int a, int b) {
+    while(a > 0 && b > 0) {
+        if(a > b) {
+            a = a % b;
+        }
+        else {
+            b = b % a; 
+        }
+    }
+    if(a == 0) return b;
+    return a;
+}
+
 void solve() {
     int n;
     cin>>n;

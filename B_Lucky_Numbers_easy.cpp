@@ -8,6 +8,21 @@ using namespace std;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 
+
+int gcd(int a, int b) {
+    while(a > 0 && b > 0) {
+        if(a > b) {
+            a = a % b;
+        }
+        else {
+            b = b % a; 
+        }
+    }
+    if(a == 0) return b;
+    return a;
+}
+
+
 int rec(int four, int seven, int num,int n){
     if(four==0 && seven==0){
         return num>=n ? num : 1e15;
